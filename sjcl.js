@@ -857,6 +857,9 @@ sjcl.mode.ccm = {
     for (L=2; L<4 && ol >>> 8*L; L++) {}
     if (L < 15 - ivl) { L = 15-ivl; }
     iv = w.clamp(iv,8*(15-L));
+
+    console.warn("[sjcl.mode.ccm.encrypt] iv:", sjcl.bitArray.bitLength(iv));
+    console.warn("[sjcl.mode.ccm.encrypt] iv:", sjcl.codec.base64.fromBits(iv));
     
     // compute the tag
     tag = sjcl.mode.ccm._computeTag(prf, plaintext, iv, adata, tlen, L);
